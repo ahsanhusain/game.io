@@ -113,7 +113,8 @@ function myfunc() {
     if (a != '' && b != '' && c != '' && d != '') {
         if (a == num1 && b == num2 && c == num3 && d == num4) {
             // Show Level Completed Modal
-            $('#levelCompletedModal').modal('show');
+            // $('#levelCompletedModal').modal('show');
+            window.location.href = 'levelcomplete.html';
         } else {
             // Show Wrong Code Modal
             $('#wrongCodeModal').modal('show');
