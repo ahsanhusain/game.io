@@ -5,34 +5,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level Completed</title>
+        <!-- Bootstrap CDN starts-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CDN ends -->
+
+    <!-- Font Awesome kit --- for icons -->
+    <script src="https://kit.fontawesome.com/788fc8cac3.js" crossorigin="anonymous"></script>
+
+    <!-- Google font CDN for Yeon Sung font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet"> -->
+    <!-- Google font CDN ends -->
+
+    <!-- Banger Font -->
+    <link href="./bangers/Bangers-Regular.ttf" rel="stylesheet">
+
+    <!-- Internal CSS -->
     <style>
+        @font-face {
+          font-family: 'Bangers-Regular';
+          src: url('./bangers/Bangers-Regular.ttf') format('truetype');
+          /* You can also include other font formats (e.g., woff, woff2) for cross-browser compatibility */
+        }
+
         body {
             margin: 0;
             padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             height: 100vh;
-            background-image: url('your-background-image.jpg'); /* Replace with your image path */
-            background-size: cover;
+            background-image: url('assets/cong.jpg'); /* Replace with your image path */
+            background-size: auto;
             background-position: center;
             color: white;
-            font-family: Arial, sans-serif;
             text-align: center;
         }
 
-        .message {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
+        * {
+            font-family: 'Bangers-Regular', cursive;
         }
     </style>
 </head>
 
 <body>
-    <div class="message">
-        <h1>LEVEL COMPLETED</h1>
-        <p>CONGRATULATIONS</p>
+    <div class="congrat">
+        <img src="assets/level_message.png" alt="Congratulations! Level Completed" loading="lazy">
+    </div>
+    <div class="_next">
+        <div>
+            a
+            <img src="assets/next.png" alt="Next Level" loading="lazy">
+            <h1>
+                <a href="game.html" class="text-white">Next</a>
+            </h1>
+        </div>
+    </div>
+
+    <div class="align-items-center d-flex justify-content-around rate_share">
+        <div>
+            <img src="assets/rate_us.png" alt="Rate Us" loading="lazy">
+            <h1>
+                <a href="javascript:void(0)" class="text-white">Rate Us</a>
+            </h1>
+        </div>
+        <div>
+            <img src="assets/share.png" alt="Share Score" loading="lazy">
+            <h1>
+                <a href="javascript:void(0)" class="text-white">Share</a>
+            </h1>
+        </div>
     </div>
 </body>
 
