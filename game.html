@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Crack-The-Code Game</title>
+
+	<!-- Bootstrap CDN starts-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		crossorigin="anonymous"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<!-- Bootstrap CDN ends -->
+
+	<!-- Font Awesome kit --- for icons -->
+	<script src="https://kit.fontawesome.com/788fc8cac3.js" crossorigin="anonymous"></script>
+
+	<!-- Google font CDN for Yeon Sung font -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap" rel="stylesheet"> -->
+	<!-- Google font CDN ends -->
+
+	<!-- Banger Font -->
+	<link href="./bangers/Bangers-Regular.ttf" rel="stylesheet">
+
+	<!-- Internal CSS -->
+	<style>
+
+		@font-face {
+		  font-family: 'Bangers-Regular';
+		  src: url('./bangers/Bangers-Regular.ttf') format('truetype');
+		  /* You can also include other font formats (e.g., woff, woff2) for cross-browser compatibility */
+		}
+		body {
+			background-image: url('https://img.freepik.com/free-photo/green-gradient-abstract-background-empty-room-with-space-your-text-picture_1258-117938.jpg?size=626&ext=jpg&ga=GA1.1.142706108.1702002543&semt=ais');
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-color: #000000;
+			/* Dark Green */
+			height:100vh;
+		}
+
+		* {
+			font-family: 'Bangers-Regular', cursive;
+		}
+
+		.language-box {
+			background-color: #000000;
+			/* Dark Green */
+			border: 2px solid #006300;
+			/* Light Green */
+			border-radius: 5px;
+			color: white;
+			text-align: center;
+			padding: 5px;
+			position: fixed;
+			top: 10%;
+			right: 26%;
+			height: 40px;
+			width: 42px;
+		}
+
+		input {
+			width: 60px;
+			height: 40px;
+			border-radius: 5px;
+			text-align: center;
+		}
+
+		.score-box {
+			width: 250px;
+			height: 50px;
+			background-color: #000000;
+			border: 2px solid #006300;
+			border-radius: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: white;
+			font-size: 18px;
+			text-transform: uppercase;
+			padding: 0 15px;
+			margin-top: 15px;
+			margin: 0 auto;
+		}
+
+		.check {
+			background-color: #006400;
+			color: #fff;
+			padding: 10px 20px;
+			display: inline-block;
+			margin: 20px 0;
+			cursor: pointer;
+			width: 167px;
+			border-radius: 13px;
+		}
+
+		.check:hover {
+			background-color: #006400;
+		}
+
+		.main-box {
+			position: relative;
+			width: 700px;
+			height: 70px;
+			background-color: #000000;
+			border: 2px solid #006300;
+			margin: 20px auto;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 10px;
+		}
+
+		.digit-container {
+			display: flex;
+		}
+
+		.digit-box {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 45px;
+			background-color: #000000;
+			border: 2px solid #006300;
+			margin-right: 10px;
+			padding: 5px;
+		}
+
+		.arrow-btn {
+			display: flex;
+			background: none;
+			border: none;
+			color: white;
+			font-size: 20px;
+			cursor: pointer;
+			justify-content: center;
+			align-items: center;
+			margin: 0px 8px;
+		}
+
+		.digit-input {
+			width: 100%;
+			height: 100%;
+			border: none;
+			outline: none;
+			background-color: transparent;
+			color: white;
+			font-size: 18px;
+			text-align: center;
+		}
+
+		.right-text {
+			color: white;
+			font-size: 17px;
+			text-transform: uppercase;
+			width: 64%;
+		}
+
+		.digit-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#helpButton {
+			position: fixed;
+			top: 18%;
+			right: 24%;
+			cursor: pointer;
+		}
+
+		#refreshButton {
+			position: fixed;
+			top: 10%;
+			left: 25%;
+			cursor: pointer;
+		}
+
+		.whatCode{
+			background: url(assets/success_bg.png) no-repeat center;
+		}
+
+		.hint-section{
+			background: linear-gradient(114deg, #005f3e00 8%, #609210 9%)
+		}
+	</style>
+</head>
+
+<body>
+
+	<div>
+		<div class="align-items-center col-lg-6 justify-content-around m-0 m-auto pt-3 row">
+			<!-- Refresh Button -->
+			<div id="refresh">
+				<img src="logo-removebg-preview.png" alt="Refresh Button" width="100" height="100" onclick="refreshPage()" loading="lazy">
+			</div>
+
+			<!-- Score Board -->
+			<div class="bg-transparent border border-success m-0 p-2 rounded text-capitalize text-center text-white w-25">Your Score: 100</div> <!-- Replace with your dynamic score or content -->
+
+			<!-- language -->
+			<div class="bg-dark border border-success p-2 rounded-bottom rounded-top text-white">
+				<p class="m-0">EN</p>
+			</div>
+		</div>
+	</div>
+
+		<div>
+		<div class="align-items-center col-lg-5 justify-content-end m-0 m-auto pt-3 row">
+			<!-- HELP -->
+			<div id="" class="text-right" onclick="showHelp()">
+				<img src="assets/help.png" alt="Help Button" width="50" height="50" loading="lazy">
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="text-center">
+			<div class="align-items-center d-flex justify-content-center w-100 whatCode">
+				<h1 class="col-lg-6 p-3" style="color:rgb(245, 245, 231);"> What Is The Code?</h1>
+			</div>
+		</div>
+		<!-- 3 input fields -->
+		<div class="text-center">
+				<div class="digit-container">
+					<div class="text-center">
+						<button class="arrow-btn" onclick="incrementValue('b1');">&#9650;</button>
+						<div class="digit-box">
+							<input type="text" min="0" max="9" id="b1" class="digit-input" maxlength="1">
+						</div>
+						<button class="arrow-btn" onclick="decrementValue('b1');">&#9660;</button>
+					</div>
+					<div class="text-center">
+						<button class="arrow-btn" onclick="incrementValue('b2');">&#9650;</button>
+						<div class="digit-box">
+							<input type="text" min="0" max="9" id="b2" class="digit-input" maxlength="1">
+						</div>
+						<button class="arrow-btn" onclick="decrementValue('b2');">&#9660;</button>
+					</div>
+					<div class="text-center">
+						<button class="arrow-btn" onclick="incrementValue('b3');">&#9650;</button>
+						<div class="digit-box">
+							<input type="text" min="0" max="9" id="b3" class="digit-input" maxlength="1">
+						</div>
+						<button class="arrow-btn" onclick="decrementValue('b3');">&#9660;</button>
+					</div>
+					<div class="text-center">
+						<button class="arrow-btn" onclick="incrementValue('b4');">&#9650;</button>
+						<div class="digit-box">
+							<input type="text" min="0" max="9" id="b4" class="digit-input" maxlength="1">
+						</div>
+						<button class="arrow-btn" onclick="decrementValue('b4');">&#9660;</button>
+					</div>
+				</div>
+			<!-- Modified Check button -->
+			<button class="bg-transparent btn" onclick="myfunc();">
+				<!-- <i class="fas fa-circle-check"></i> Check -->
+				<img src="assets/check_btn.png" class="w-50" loading="lazy" alt="Check The Code">
+			</button>
+		</div>
+		<!-- Hints starts -->
+		<div class="col-lg-8 m-auto">
+			<div class="align-items-center bg-transparent border border-success d-md-flex d-lg-flex justify-content-between mb-2 pl-2 position-relative">
+				<div class="align-items-center d-flex justify-content-center my-3 my-lg-0" id="h1"></div>
+				<div class="h5 col-lg-7 hint-section m-0 p-0 p-3 px-4 text-capitalize text-center text-white">
+					One Number is correct and well placed
+				</div>
+			</div>
+			<div class="align-items-center bg-transparent border border-success d-md-flex d-lg-flex justify-content-between mb-2 pl-2 position-relative">
+				<div class="align-items-center d-flex justify-content-center my-3 my-lg-0" id="h2"></div>
+				<div class="h5 col-lg-7 hint-section m-0 p-0 p-3 px-4 text-capitalize text-center text-white">
+					One Number is correct but wrong placed
+				</div>
+			</div>
+			<div class="align-items-center bg-transparent border border-success d-md-flex d-lg-flex justify-content-between mb-2 pl-2 position-relative">
+				<div class="align-items-center d-flex justify-content-center my-3 my-lg-0" id="h3"></div>
+				<div class="h5 col-lg-7 hint-section m-0 p-0 p-3 px-4 text-capitalize text-center text-white">
+					Two numbers are correct but wrongly placed
+				</div>
+			</div>
+			<div class="align-items-center bg-transparent border border-success d-md-flex d-lg-flex justify-content-between mb-2 pl-2 position-relative">
+				<div class="align-items-center d-flex justify-content-center my-3 my-lg-0" id="h4"></div>
+				<div class="h5 col-lg-7 hint-section m-0 p-0 p-3 px-4 text-capitalize text-center text-white">
+					Two numbers are correct and well placed
+				</div>
+			</div>
+		</div>
+		<!-- Hints ends -->
+	</div>
+		
+	<!--Popup Modal -->
+	<!-- Modal for Empty Fields -->
+	<div class="modal fade" id="emptyModal" tabindex="-1" role="dialog" aria-labelledby="emptyModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-dialog-centered" role="document">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h3 class="modal-title" id="emptyModalLabel">Empty Fields</h3>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <div class="modal-body">
+	                <p>Please fill in all the fields.</p>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- Modal for Wrong Code -->
+	<div class="modal fade" id="wrongCodeModal" tabindex="-1" role="dialog" aria-labelledby="wrongCodeModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-dialog-centered" role="document">
+	        <div class="modal-content" style="background-color: #bc2020;">
+	            <div class="modal-header" >
+	                <h3 class="modal-title" id="wrongCodeModalLabel" style="color: #FFFFFF; font-weight: bold; font-size: 30px;">Wrong Code</h3>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <div class="modal-body" style="text-align: center;">
+	                <p style="color: #FFFFFF; font-size: 30px;">Sorry, the entered code is incorrect. Please try again.</p>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- Modal for Level Completed -->
+	<div class="modal fade" id="levelCompletedModal" tabindex="-1" role="dialog" aria-labelledby="levelCompletedModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-dialog-centered" role="document">
+	        <div class="modal-content" style="background-image: url('greenbackground.png'); background-size: cover;">
+	            <div class="modal-header">
+	                <h3 class="modal-title" id="levelCompletedModalLabel" style="color: #FFFFFF; font-weight: bold;font-size: 50px; text-align: center;">LEVEL COMPLETED!</h3>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <div class="modal-body">
+	                <p style="color: #FFFFFF; font-weight: bold; font-size: 30px;">CONGRATULATIONS</p>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	                <button type="button" class="btn btn-success" onclick="refreshPage()">
+	                    <img src="nexticon-removebg-preview.png" alt="Refresh Button" width="20" height="20">
+	                </button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- Help -->
+	<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="helpModalLabel">Game Instructions</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- Add your help paragraphs here -->
+					<p>Crack the Code is a mobile application game, which users can play to guess the code. The system
+						will
+						provide hints to the user to assist them in guessing the code.The system will provide the
+						feedback to
+						the user indicating if their guess was correct or not. If the guess is correct, user will get
+						one
+						point and move one level up and if the user failed to guess correctly three times in a row, the
+						user
+						will be demoted one level. The higher level you go, the more difficult it gets to guess the
+						code. The
+						system will allow user to reset the code for current level.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Okay</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Popup Modal -->
+</body>
+<!-- JavaScript file included -->
+<script src="scripts.js"></script>
+
+</html>

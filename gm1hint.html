@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Rectangle Box with Digits</title>
+
+    <style>
+        .main-box {
+            position: relative;
+            width: 700px; /* Updated width */
+            height: 70px; /* Updated height */
+            background-color: #000000; /* Dark Green */
+            border: 2px solid #006300; /* Light Green */
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px; /* Added padding for better spacing */
+        }
+
+        .digit-container {
+            display: flex;
+        }
+
+        .digit-box {
+            width: 35px; /* Updated width */
+            height: 45px; /* Updated height */
+            background-color: #000000; /* Dark Green */
+            border: 2px solid #006300; /* Light Green */
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .digit-input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: white;
+            font-size: 18px; /* Set font size */
+            text-align: center;
+        }
+
+        .right-text {
+            color: white;
+            font-size: 18px; /* Increased font size */
+            text-transform: uppercase; /* Set text to uppercase */
+            width: 50%; /* Half of the width */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-box">
+        <div class="digit-container">
+            <div class="digit-box">
+                <input type="text" class="digit-input" maxlength="1">
+            </div>
+            <div class="digit-box">
+                <input type="text" class="digit-input" maxlength="1">
+            </div>
+            <div class="digit-box">
+                <input type="text" class="digit-input" maxlength="1">
+            </div>
+            <div class="digit-box">
+                <input type="text" class="digit-input" maxlength="1">
+            </div>
+        </div>
+        <div class="right-text">
+            Two numbers are correct<br>but wrongly placed
+        </div>
+    </div>
+</body>
+
+</html>
