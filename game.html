@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Crack-The-Code Game</title>
+	<title>Crack The Code</title>
 
 	<!-- Bootstrap CDN starts-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -39,9 +39,8 @@
 		  /* You can also include other font formats (e.g., woff, woff2) for cross-browser compatibility */
 		}
 		body {
-			background-image: url('https://img.freepik.com/free-photo/green-gradient-abstract-background-empty-room-with-space-your-text-picture_1258-117938.jpg?size=626&ext=jpg&ga=GA1.1.142706108.1702002543&semt=ais');
+			background-image: url('./assets/main.avif');
 			background-size: cover;
-/*			background-repeat: no-repeat;*/
 			background-position: center;
 			background-color: #000000;
 			/* Dark Green */
@@ -200,8 +199,9 @@
 	<div>
 		<div class="align-items-center col-lg-6 justify-content-around m-0 m-auto pt-3 row">
 			<!-- Refresh Button -->
-			<div id="refresh">
-				<img src="logo-removebg-preview.png" alt="Refresh Button" width="100" height="100" onclick="refreshPage()" loading="lazy">
+			<div id="refresh" onclick="refreshPage()">
+				<!-- <img src="logo-removebg-preview.png" alt="Refresh Button" width="100" height="100" onclick="refreshPage()" loading="lazy"> -->
+				<canvas id="_reset">Your browser does not support the HTML canvas tag.</canvas>
 			</div>
 
 			<!-- Score Board -->
@@ -218,7 +218,8 @@
 		<div class="align-items-center col-lg-5 justify-content-end m-0 m-auto pt-3 row">
 			<!-- HELP -->
 			<div id="" class="mb-3 text-right" onclick="showHelp()">
-				<img src="assets/help.png" alt="Help Button" width="50" height="50" loading="lazy">
+				<!-- <img src="assets/help.png" alt="Help Button" width="50" height="50" loading="lazy"> -->
+				<canvas id="_help">Your browser does not support the HTML canvas tag.</canvas>
 			</div>
 		</div>
 	</div>
@@ -226,11 +227,13 @@
 	<div class="container">
 		<div class="text-center">
 			<div class="align-items-center d-flex justify-content-center w-100 whatCode">
-				<h1 class="col-lg-6 p-3" style="color:rgb(245, 245, 231);"> What Is The Code?</h1>
+				<h1 class="col-lg-6 p-3">
+					<canvas id="your_code" height="80">Your browser does not support the HTML canvas tag.</canvas>
+				</h1>
 			</div>
 		</div>
 		<!-- 3 input fields -->
-		<div class="mb-5 text-center">
+		<div class="text-center">
 				<div class="digit-container">
 					<div class="text-center">
 						<button class="arrow-btn" onclick="incrementValue('b1');">&#9650;</button>
@@ -264,7 +267,8 @@
 			<!-- Modified Check button -->
 			<button class="bg-transparent btn" onclick="myfunc();">
 				<!-- <i class="fas fa-circle-check"></i> Check -->
-				<img src="assets/check_btn.png" class="w-50" loading="lazy" alt="Check The Code">
+				<!-- <img src="assets/check_btn.png" class="w-50" loading="lazy" alt="Check The Code"> -->
+				<canvas id="_check_btn">Your browser does not support the HTML canvas tag.</canvas>
 			</button>
 		</div>
 		<!-- Hints starts -->

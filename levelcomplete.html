@@ -39,7 +39,7 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            height: 100%;
             background-image: url('assets/cong.jpg'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
@@ -50,15 +50,20 @@
         * {
             font-family: 'Bangers-Regular', cursive;
         }
+        #congrats{
+            width: 100%!important;
+            height: auto;
+        }
     </style>
 </head>
 
 <body>
-    <div class="d-flex flex-column h-100 justify-content-around">
+    <div class="d-flex flex-column justify-content-around">
         <div>
             <div class="congrat d-flex justify-content-center w-100">
                 <div>
-                    <img src="assets/level_message.png" class="w-100" alt="Congratulations! Level Completed" loading="lazy">
+                    <!-- <img src="assets/level_message.png" class="w-100" alt="Congratulations! Level Completed" loading="lazy"> -->
+                    <canvas id="congrats" height="80">Your browser does not support the HTML canvas tag.</canvas>
                 </div>
             </div>    
         </div>
@@ -67,31 +72,41 @@
                 <div class="m-auto w-50">
                     <div>
                         <a href="game.html" class="text-white">
-                            <img src="assets/next.png" alt="Next Level" loading="lazy">
+                            <!-- <img src="assets/next.png" alt="Next Level" loading="lazy"> -->
+                            <canvas id="_next" height="80">Your browser does not support the HTML canvas tag.</canvas>
                         </a>
                         <h1>
-                            <a href="game.html" class="text-white">Next</a>
+                            <a href="game.html" class="text-white">
+                                <!-- Next -->
+                                <canvas id="level_cls" height="80">Your browser does not support the HTML canvas tag.</canvas>
+                            </a>
                         </h1>
                     </div>
                 </div>
             </div>
 
-            <div class="align-items-end d-flex justify-content-around rate_share">
+            <div class="align-items-end d-lg-flex d-md-flex d-block justify-content-around rate_share">
                 <div>
-                    <img src="assets/rate_us.png" class="w-50" alt="Rate Us" loading="lazy">
+                    <!-- <img src="assets/rate_us.png" class="w-50" alt="Rate Us" loading="lazy"> -->
+                    <canvas id="_rate_us" height="80">Your browser does not support the HTML canvas tag.</canvas>
                     <h1>
-                        <a href="javascript:void(0)" class="text-white">Rate Us</a>
+                        <a href="javascript:void(0)" class="text-white">
+                            <canvas id="rate_us" height="80">Your browser does not support the HTML canvas tag.</canvas>
+                        </a>
                     </h1>
                 </div>
                 <div>
-                    <img src="assets/share.png" class="w-50" alt="Share Score" loading="lazy">
+                    <!-- <img src="assets/share.png" class="w-50" alt="Share Score" loading="lazy"> -->
+                    <canvas id="_share" height="80">Your browser does not support the HTML canvas tag.</canvas>
                     <h1>
-                        <a href="javascript:void(0)" class="text-white">Share</a>
+                        <a href="javascript:void(0)" class="text-white">
+                            <canvas id="share" height="80">Your browser does not support the HTML canvas tag.</canvas>
+                        </a>
                     </h1>
                 </div>
             </div>
         </div>
     </div>
+    <script src="level_complete.js"></script>
 </body>
-
 </html>

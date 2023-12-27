@@ -144,3 +144,55 @@ function refreshPage() {
 function showHelp(){
 	$('#helpModal').modal('show');
 }
+
+// create your_code canvas
+var c = document.getElementById("your_code");
+var ctx = c.getContext("2d");
+var font = new FontFace('Bangers-Regular', 'url(./bangers/Bangers-Regular.ttf)');
+font.load().then(function(loadedFont) {
+  document.fonts.add(loadedFont);
+  ctx.font = "40px 'Bangers-Regular', cursive";
+  ctx.fillStyle = "white";
+
+  var text = "What Is The Code?";
+  var x = (c.width - ctx.measureText(text).width) / 2;
+  var y = 50;
+
+  ctx.fillText(text, x, y);
+});
+
+var canvasIds = ['_reset', '_help', '_check_btn']; // Add more canvas IDs as needed
+var imageSources = [
+    'logo-removebg-preview.png',
+    'assets/help.png',
+    'assets/check_btn1.png'
+];
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Loop through each canvas
+    canvasIds.forEach(function (canvasId, index) {
+        var canvas = document.getElementById(canvasId);
+        var ctx = canvas.getContext('2d');
+        var img = new Image();
+        img.src = imageSources[index];
+
+        img.onload = function () {
+            drawImage(canvas, img);
+        };
+
+        // Redraw the image when the window is resized
+        window.addEventListener('resize', function () {
+            drawImage(canvas, img);
+        });
+    });
+});
+
+function drawImage(canvas, img) {
+    // Set canvas dimensions based on the loaded image
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    // Draw the image on the canvas
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+}
